@@ -89,8 +89,17 @@ export const deleteUser = async (req, res) => {
     const {id} = req.params;
     try {
         const userdelete = await User.findByIdAndDelete(id)
+        res.status(200).json({
+            ok: true,
+            msg: "Usuario borrado con exito",
+            data: userdelete,
+        })
     } catch (error) {
-        
+     console.error(error)
+     res.status(500).json({
+        ok: false,
+        msg: "Error del servidor",
+     })   
     }
     
 }
