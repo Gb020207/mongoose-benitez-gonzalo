@@ -12,11 +12,23 @@ level:{
     required: true,
     unique: true
 },
-user:{
-    type: Types.ObjectId,
-    ref:"User",
+user:[{
+  username: {
+    type: String,
     required: true,
-}
+    unique: true
+},
+email:{
+    type: String,
+    required: true,
+    unique: true
+},
+password:{
+    type: String,
+    required: true,
+    
+},
+}]
 },
 {
     versionKey:false,
