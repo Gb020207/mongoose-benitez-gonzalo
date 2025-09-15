@@ -47,7 +47,7 @@ export const getAlluser = async (req, res) => {
 export const getUserById = async (req, res) => {
     const {id} = req.params;
     try {
-          if (!mongoose.Types.ObjectId.isValid(id)) {
+          if (!id) {
       return res.status(400).json({
         ok: false,
         msg: "ID no válido",
@@ -56,7 +56,7 @@ export const getUserById = async (req, res) => {
         
         const user = await User.findById(id);
 
-        res.status(201).json({
+        res.status(200).json({
             ok: true,
             data: user,
         })
